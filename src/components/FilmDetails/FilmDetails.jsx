@@ -13,7 +13,7 @@ export const FilmDetails = ({ title, planets, opening_crawl, release_date, produ
 
   const getStarShips = async () => {
     Promise.all(starships.map(starship => (
-      fetch(starship)
+      fetch(starship.replace('http', 'https'))
       .then(responce => responce.json())
       .then(obj => setStarships(prev => [...prev, obj]))
     )))
@@ -21,7 +21,7 @@ export const FilmDetails = ({ title, planets, opening_crawl, release_date, produ
 
   const getPlanets = async () => {
     Promise.all(planets.map(planet => (
-      fetch(planet)
+      fetch(planet.replace('http', 'https'))
       .then(responce => responce.json())
       .then(obj => setPlanets(prev => [...prev, obj])))
     ))
